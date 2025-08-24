@@ -3,15 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 
+DATA_URL = "https://github.com/naufthy/proyek-analisis-data/releases/download/v1.0/main_data.csv"
+
+@st.cache_data
+def load_data(url):
+    df = pd.read_csv(url)
+    df['datetime'] = pd.to_datetime(df['datetime'])
+    return df
+
 st.set_page_config(
     page_title="Dashboard Analisis Kualitas Udara",
     page_icon="💨😷",
     layout="wide"
 )
-
-
-all_df = pd.read_csv('main_data.csv')
-all_df['datetime'] = pd.to_datetime(all_df['datetime'])
+all_df = load_data(DATA_URL)
 
 st.title("💨Dashboard Analisis Kualitas Udara😷")
 
