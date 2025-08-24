@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 
-all_df = pd.read_csv('submission/dashboard/main_data.csv')
+all_df = pd.read_csv('main_data.csv')
 all_df['datetime'] = pd.to_datetime(all_df['datetime'])
 
 st.title("💨Dashboard Analisis Kualitas Udara😷")
